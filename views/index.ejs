@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>食 刻 | 首 页</title>
+    <link rel="stylesheet" href="/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/css/index.css"/>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/index.js"></script>
+    <script src="/index.js" type="text/javascript"></script>
+    <script src="/caipu.js" type="text/javascript"></script>
+    <script>
+        sessionStorage.setItem('myid','<%= userid%>')
+    </script>
+</head>
+<body>
+<%- include ('header.ejs') %>
+<div class="container mt-5" style="border-radius: 10px;background-color: #f5f5f4">
+    <ul class="nav nav-tabs align-content-center justify-content-center ">
+        <li class="nav-item">
+            <%if(typenum==1){%>
+            <a href="/index" class="nav-link nav-text active">全部</a>
+            <%}else{%>
+                    <a href="/index" class="nav-link nav-text">全部</a>
+            <%}%>
+        </li>
+        <li class="nav-item">
+            <%if(typenum==2){%>
+            <a href="/index/type?ctype=家常菜" class="nav-link nav-text active">家常菜</a>
+            <%}else{%>
+                    <a href="/index/type?ctype=家常菜" class="nav-link nav-text">家常菜</a>
+                <%}%>
+        </li>
+        <li class="nav-item">
+            <%if(typenum==3){%>
+            <a href="/index/type?ctype=汤" class="nav-link nav-text active">汤</a>
+            <%}else{%>
+                    <a href="/index/type?ctype=汤" class="nav-link nav-text">汤</a>
+                <%}%>
+        </li>
+        <li class="nav-item">
+            <%if(typenum==4){%>
+            <a href="/index/type?ctype=西餐" class="nav-link nav-text active">西餐</a>
+            <%}else{%>
+                    <a href="/index/type?ctype=西餐" class="nav-link nav-text">西餐</a>
+                <%}%>
+        </li>
+        <li class="nav-item">
+            <%if(typenum==5){%>
+            <a href="/index/type?ctype=烘焙" class="nav-link nav-text active">烘焙</a>
+            <%}else{%>
+                    <a href="/index/type?ctype=烘焙" class="nav-link nav-text">烘焙</a>
+                <%}%>
+        </li>
+    </ul>
+    <!--        内容显示区 轮播图-->
+    <div class="tab-content">
+<!--        <div id="tab1" class="tab-pane active">-->
+                <div class="container">
+                    <div class="carousel mt-2" data-ride="carousel" id="demo">
+                        <!--        轮播图片-->
+                        <div class="carousel-inner">
+
+                            <%for(var i=0;i<6;i++){%>
+                            <%if(i==0){%>
+                                <div class="carousel-item active">
+                                    <%}else{%>
+                                    <div class="carousel-item">
+                                        <%}%>
+                                        <div class="row">
+                                            <div class="col-12 col-lg-7">
+                                                <a href="/caipu?cid=<%=carousels[i].cid %>&uid=<%=userid%>">
+                                                    <img src="/img/food/<%=carousels[i].rect_pic %>" alt="" class="w-100">
+                                                </a>
+                                            </div>
+                                            <div class="col-12 col-lg-5">
+                                                <a href="/caipu?cid=<%=carousels[i].cid %>">
+                                                    <h2 class="ctitle"><%=carousels[i].title %></h2>
+                                                    <p class="cdescript"><%=carousels[i].descript %></p>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                           <% }%>
+                        </div>
+                        <!--        左右箭头-->
+                        <a href="#demo" class="carousel-control-next" data-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </a>
+                        <a href="#demo" class="carousel-control-prev" data-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </a>
+                        <!--        轮播指示-->
+                        <ul class="carousel-indicators">
+                            <li class="active"  data-slide-to="0" data-target="#demo"></li>
+                            <li data-slide-to="1" data-target="#demo"></li>
+                            <li data-slide-to="2" data-target="#demo"></li>
+                            <li data-slide-to="3" data-target="#demo"></li>
+                            <li data-slide-to="4" data-target="#demo"></li>
+                            <li data-slide-to="5" data-target="#demo"></li>
+                        </ul>
+                    </div>
+                </div>
+                    <div class="border-bottom mt-2"></div>
+                    <div class="border-bottom">
+                        <%if(typenum==1){%>
+                        <h4 class="mt-5 jx">精选·菜谱</h4>
+                        <%}else{%>
+                                <h4 class="mt-5 jx">精选·<%=typename%></h4>
+                        <%}%>
+                    </div>
+                    <div class="row mt-3 align-content-center p-0">
+                        <%if(carousels.length>30){%>
+                        <%for(var i=0;i<30;i++){%>
+                        <div class=" coll mb-5 p-0" id="bgc">
+                            <a href="/caipu?cid=<%=carousels[i].cid %>&uid=<%=userid%>" >
+                                <div><img src="/img/food/<%=carousels[i].square_pic %>" alt="" class="indeximg"></div>
+                                <div class="indexcp p-2 mb-4">
+                                    <h7><%=carousels[i].title %></h7>
+                                    <div class="mt-1">
+                                        <div style="float: left;">
+                                            <img src="/img/user/<%=carousels[i].pic %>" alt="" class="txsize rounded-circle">
+                                            <span class="ml-1 haha2">
+                                            <%=carousels[i].uname%>
+                                            </span>
+                                        </div>
+                                        <div style="float: right !important;" >
+                                            <img src="/img/icon/sc.png" alt="" class="iconsize4 mt-0">
+                                            <span class="ml-1 haha">
+                                            <%=carousels[i].collect%>
+                                            </span>
+                                            <img src="/img/icon/dz.png" alt="" class="iconsize4 ml-2 mt-0">
+                                            <span class="ml-1 haha">
+                                            <%=carousels[i].dianzan%>
+                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <%}%>
+                        <%}else{%>
+                        <%carousels.forEach(function (carousel){%>
+                        <div class=" coll mb-5 p-0" id="bgc">
+                            <a href="/caipu?cid=<%=carousel.cid %>&uid=<%=userid%>" >
+                                <div><img src="/img/food/<%=carousel.square_pic %>" alt="" class="indeximg"></div>
+                                <div class="indexcp p-2 mb-4">
+                                    <h7><%=carousel.title %></h7>
+                                    <div class="mt-1">
+                                        <div style="float: left;">
+                                            <img src="/img/user/<%=carousel.pic %>" alt="" class="txsize rounded-circle">
+                                            <span class="ml-1 haha2">
+                                            <%=carousel.uname%>
+                                            </span>
+                                        </div>
+                                        <div style="float: right !important;" >
+                                            <img src="/img/icon/sc.png" alt="" class="iconsize4 mt-0">
+                                            <span class="ml-1 haha">
+                                            <%=carousel.collect%>
+                                            </span>
+                                            <img src="/img/icon/dz.png" alt="" class="iconsize4 ml-2 mt-0">
+                                            <span class="ml-1 haha">
+                                            <%=carousel.dianzan%>
+                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <%})%>
+                        <%}%>
+                    </div>
+                    <div class="text-center more"><a href="/sousuo/typesousuo?uid=<%=userid%>&&upic=<%=upic%>&&tname=<%=typename%>&&tnum=<%=typenum%>">查看更多 >></a></div>
+                    <div class="mt-4" style="height: 2px"></div>
+<!--            </div>-->
+        </div>
+
+    </div>
+</div>
+<br>
+
+<%- include ('foot.ejs') %>
+</body>
+
+</html>

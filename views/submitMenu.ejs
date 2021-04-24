@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>食 刻 | 提 交</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/submitMenu.css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/submitMenuPage.js"></script>
+    <!--后面的js需要用到前面的js-->
+
+</head>
+<body>
+<%- include ('header.ejs') %>
+    <div class="container border-bottom mt-1">
+        <span class="text-hide">总步骤数</span>
+        <div class="mb-1">
+            <img src="../img/icon/left.png" class="back_btn img-responsive center-block "
+                     onclick="javascript:location.href='/user/userinfo/<%=userid%>'"
+                     onmouseover="this.src='../img/icon/left_activ.png'" onmouseout="this.src='../img/icon/left.png'"
+            />
+            <span>编辑菜单</span>
+        </div>
+    </div>
+    <div class="container mt-1">
+        <form  action="/submitMenu/img" enctype="multipart/form-data"  method="POST" role="form" id="registSubmit">
+            <input type="text" value="<%=userid%>>" name="submitMenuUid" style="display: none">
+            <div class="form-group">
+                <label for="name" class="text-muted label_com">名称</label>
+                <input type="text" name="title" class="form-control" id="name" placeholder="请输入菜谱名称">
+            </div>
+
+
+            <div class="container row mt-3">
+                <div class="col-lg-5 col-12">
+                    <label  class="text-muted label_com">首页缩略图</label><br>
+                    <div class="form-group">
+
+                        <!--文件上传点击部分-->
+                        <label for="square_pic" class="file-label">
+                            <span >文件上传</span>
+                        </label>
+                        <!--照片显示-->
+                        <img src="/img/food/empty.jpg" id="square_show" class="square_img" alt="">
+                        <!--被隐藏的实际打开文件组件-->
+                        <input type="file" multiple="multiple" name="square_pic" id="square_pic" class="file-input">
+                        <!--描述部分-->
+                    </div>
+                </div>
+
+
+                <div class="col-lg-6 col-12">
+                    <label  class="text-muted label_com">详情成品图片</label><br>
+                    <div class="form-group">
+
+                        <!--文件上传点击部分-->
+                        <label for="rect_pic" class="file-label">
+                            <span >文件上传</span>
+                        </label>
+                        <!--照片显示-->
+                        <img src="/img/food/empty.jpg" id="rect_show" class="rect_img" alt="">
+                        <!--被隐藏的实际打开文件组件-->
+                        <input type="file" multiple="multiple" name="rect_pic" id="rect_pic" class="file-input">
+                        <!--描述部分-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="container form-group mt-3">
+                <label  class="text-muted label_com">菜谱描述</label><br>
+                <textarea name="description" class="container border-light" placeholder="请输入菜谱描述，最多输入100字" cols="30" rows="10"></textarea>
+            </div>
+
+
+            <div class="container form-group mt-3">
+                <label  class="text-muted label_com">菜品类型</label><br>
+                <div   class="btn-group" data-toggle="buttons">
+                    <label   class="btn btn-outline-info active"  >
+                        <input type="radio" name="class" checked="checked" autocomplete="off" value="家常菜"> &nbsp; &nbsp;家常菜 &nbsp; &nbsp;
+
+                    </label>
+                    <label   class="btn btn-outline-info"  >
+                        <input type="radio" name="class" autocomplete="off" value="汤"> &nbsp; &nbsp;汤 &nbsp; &nbsp;
+
+                    </label>
+                    <label   class="btn btn-outline-info"  >
+                        <input type="radio" name="class" autocomplete="off" value="烘焙"> &nbsp; &nbsp;烘焙 &nbsp; &nbsp;
+                    </label>
+                    <label   class="btn btn-outline-info"  >
+                        <input type="radio" name="class" autocomplete="off" value="西餐"> &nbsp; &nbsp;西餐 &nbsp; &nbsp;
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!--步骤一行-->
+
+            <!--用于插入步骤-->
+            <div class="steps_div mt-3">
+                <!--用于插入步骤-->
+                <label  class="text-muted label_com ">做法步骤</label><br>
+
+            </div>
+            <button type="submit" class="mb-2 btn btn-outline-danger" >发布菜谱</button>
+        </form>
+
+    </div>
+<br>
+<br>
+<%- include ('foot.ejs') %>
+</body>
+</html>

@@ -1,0 +1,90 @@
+html,body{
+    background-color: #f5f5f4;
+    color: #333333;
+}
+.container{
+    /*background-color: #fff;*/
+}
+.my_small{
+    font-size: 0.9rem;
+}
+.btn-outline-warning{
+    border-color: #fcd670;
+}
+.btn-outline-warning:hover {
+    color: #ffffff;
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+/*******左边样式******/
+.left{
+    background-color: #ffffff;
+    border: 3px solid #f5f5f4;
+}
+.right{
+    background-color: #ffffff;
+    border: 3px solid #f5f5f4;
+}
+.left p{
+    color: #99999e;
+}
+.left .info {
+    text-align: center;
+}
+.left img{
+    width: 100%;
+    height: auto;
+}
+.left .line{
+    border: 0.3px solid #f5f5f4;
+    margin: 0 auto;
+}
+/*******右边样式***/
+.right .page{
+    text-align: center;
+}
+.right img{
+    width: 50%;
+    height: auto;
+}
+.right .line{
+    border: 0.3px solid #f5f5f4;
+    margin: 0 auto;
+}
+.right .dish{
+    color: #999aaa;
+}
+.right .info{
+    color: #5f6471;
+    /*display: table;*/
+    display: flex;
+    align-items: center;
+}
+.right .icon{
+    /*width: 30%;*/
+    /*height: auto;*/
+    width: 25px;
+    height: 25px;
+}
+/****分页**************************/
+ul.pagination {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+
+ul.pagination li {display: inline;}
+
+ul.pagination li a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+ul.pagination li a.active {
+    background-color: #fcd670;
+    color: white;
+}
+
+ul.pagination li a:hover:not(.active) {background-color: #ddd;}

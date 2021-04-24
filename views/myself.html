@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>食 刻 | 主 页</title>
+    <!--相对于public的路径-->
+    <link rel="stylesheet" href="/css/bootstrap.css"/>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/demo.css"/>
+    <script>
+        function showcollection(){
+            var dDiv=document.getElementById("showdishmenus");
+            var cDiv=document.getElementById("showcollection");
+            var fDiv=document.getElementById("showfollow");
+            var aDiv=document.getElementById("showfans");
+            dDiv.style.display="none";
+            fDiv.style.display="none";
+            aDiv.style.display="none";
+            cDiv.style.display="block";
+        }
+        function showfollow(){
+            var dDiv=document.getElementById("showdishmenus");
+            var cDiv=document.getElementById("showcollection");
+            var fDiv=document.getElementById("showfollow");
+            var aDiv=document.getElementById("showfans");
+            dDiv.style.display="none";
+            cDiv.style.display="none";
+            aDiv.style.display="none";
+            fDiv.style.display="block";
+        }
+        function showfans(){
+            var dDiv=document.getElementById("showdishmenus");
+            var cDiv=document.getElementById("showcollection");
+            var fDiv=document.getElementById("showfollow");
+            var aDiv=document.getElementById("showfans");
+            dDiv.style.display="none";
+            cDiv.style.display="none";
+            fDiv.style.display="none";
+            aDiv.style.display="block";
+        }
+        function is(){
+            if('<%=iscollect%>'==1){
+                var dDiv=document.getElementById("showdishmenus");
+                var cDiv=document.getElementById("showcollection");
+                var fDiv=document.getElementById("showfollow");
+                var aDiv=document.getElementById("showfans");
+                dDiv.style.display="none";
+                fDiv.style.display="none";
+                aDiv.style.display="none";
+                cDiv.style.display="block";
+            }
+        }
+
+        function defunc(uidd,cidd){
+            // alert("gggg");
+            $("#menuRow"+cidd).remove();
+            $.get("/user/deletedishmenu/"+uidd+'/'+cidd);
+        }
+    </script>
+</head>
+<body onload="is()">
+<%- include ('header.ejs') %>
+<div class="container">
+    <div class="row mt-1">
+        <!----------------------------左边---------------------------->
+        <div class="col-lg-4 col-md-12 left rounded mt-1 mb-3">
+            <div class="row mt-3 mb-3">
+                <!--头像-->
+                <div class="col-4">
+                    <a href="/user/userinfo/<%= user.uid %>"><img src="/img/user/<%= user.pic %>" alt="" class="rounded-circle img mt-1"></a>
+                </div>
+                <!--信息-->
+                <div class="col-8">
+                    <div class="row">
+                        <div class="col-8"><a href="/user/userinfo/<%= user.uid %>" class="navbar-brand" style="color: #333333"><%= user.uname %></a></div>
+                        <div class="col-4">
+                            <% if (user.uid==loginuserid) { %>
+                                <form action="/update/1" method="post">
+                                    <input type="text" value="<%=user.uid%>" style="display: none" name="uid">
+                                    <button class="btn btn-outline-warning btn-sm mt-2">修改</button>
+                                </form>
+                            <% } %>
+                            <% if (user.uid!=loginuserid) { %>
+                                <% if (islike==0) { %>
+                                <form action="/user/like/<%= user.uid %>">
+                                    <button class="btn btn-outline-warning btn-sm mt-2">关注</button>
+                                </form>
+                                <% } %>
+                                <% if (islike!=0) { %>
+                                <form action="/user/unlike/<%= user.uid %>">
+                                    <button class="btn btn-outline-warning btn-sm mt-2">已关注</button>
+                                </form>
+                                <% } %>
+                            <% } %>
+                        </div>
+                        <div class="col-12"><p class="my_small"><%= user.description %></p></div>
+                        <div class="col-4 changeToHand" onclick="showfollow()">关注 <br> <%= followcount %></div>
+                        <div class="col-4 changeToHand" onclick="showfans()">粉丝 <br> <%= fanscount %></div>
+                        <div class="col-4 changeToHand" onclick="showcollection()">收藏 <br> <%= collectioncount %></div>
+                    </div>
+                </div>
+                <div class="col-lg-11 col-md-1 col-sm-0 line mt-3"></div>
+            </div>
+        </div>
+        <!----------------------------右边---------------------------->
+        <div class="col-lg-8 col-md-12 rounded right mt-1 mb-3" id="showdishmenus">
+            <!---------------------------无帖子--------------------------->
+            <% if (dishmenus.length==0) { %>
+            <div class="row mt-3 mb-3">
+                <div class="col-11 line mb-3"></div>
+                <div class="col-4 ml-2">
+                    <img src="/img/food/empty.jpg" alt="" class="rounded-circle img">
+                </div>
+                <div class="col-7">
+                    <div class="mt-5">这里空空如也QAQ</div>
+                </div>
+                <div class="col-11 line mt-3"></div>
+            </div>
+            <% } %>
+            <!---------------------------帖子列表--------------------------->
+            <% dishmenus.forEach(function(dishmenu){ %>
+            <div class="row mt-3 mb-3" id="menuRow<%= dishmenu.cid %>">
+                <div class="col-11 line mb-3"></div>
+                <div class="col-3 ml-2 text-center" onclick="javascript:location.href='/caipu?cid=<%= dishmenu.cid %>'">
+                    <img src="/img/food/<%= dishmenu.square_pic %>" alt="" class="rounded-circle img">
+                </div>
+                <div class="col-8">
+                    <div class="row">
+                        <div class="mt-2 col-10 mb-lg-4 mb-md-3"  onclick="javascript:location.href='/caipu?cid=<%= dishmenu.cid %>'"><%= dishmenu.title %></div>
+                        <div class="mt-2 col-2 mb-lg-4 mb-md-3">
+                            <% if (user.uid==loginuserid) { %>
+                                <button class="btn btn-outline-warning btn-sm" type="submit" onclick="javascript:location.href='/editMenu/showMenu?cid=<%= dishmenu.cid %>&&uid=<%= dishmenu.uid %>'">修改</button>
+                            <% } %>
+                        </div>
+                        <div class="dish col-10 my_small mb-lg-4 mb-md-3" onclick="javascript:location.href='/caipu?cid=<%= dishmenu.cid %>'"><%= dishmenu.descript %></div>
+                        <div class="mt-2 col-2 mb-lg-4 mb-md-3">
+                            <% if (user.uid==loginuserid) { %>
+<!--                            <form action="/user/deletedishmenu/<%= user.uid %>/<%= dishmenu.cid %>">-->
+                                <button class="btn btn-outline-danger btn-sm"  onclick="defunc('<%= user.uid %>','<%= dishmenu.cid %>')">删除</button>
+<!--                            </form>-->
+                            <% } %>
+                        </div>
+                        <div class="col-3 info" >
+                            <img src="/img/icon/click.png" alt="" class="icon">
+                            <span class="ml-1"><%= dishmenu.click %></span>
+                        </div>
+                        <div class="col-3 info">
+                            <img src="/img/icon/like.png" alt="" class="icon">
+                            <span class="ml-1"><%= dishmenu.dianzan %></span>
+                        </div>
+                        <div class="col-3 info">
+                            <img src="/img/icon/collect.png" alt="" class="icon">
+                            <span class="ml-1"><%= dishmenu.collect %></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-11 line mt-3"></div>
+            </div>
+            <% }); %>
+            <!---------------------------分页--------------------------->
+            <div class="page">
+                <% if (dishmenus.length!=0) { %>
+                <ul class="pagination">
+                    <%if (pageNum==1){%>
+                    <li><a href=""  disabled="true" class="btn disabled">上一页</a></li>
+                    <%}else{%>
+                    <li><a href="/user/userinfo/<%= user.uid %>?page=<%=parseInt(pageNum) - 1%>">上一页</a></li>
+                    <%}%>
+
+                    <% for(var num=1; num<=Math.ceil( (dishmenus[0].Count/10) ); num++){ %>
+                    <%if (num==pageNum){%>
+                    <li><a class="active" tag='<%= pageNum %>' href="/user/userinfo/<%= user.uid %>?page=<%=num%>"><%=num%></a></li>
+                    <%}else{%>
+                    <li><a href="/user/userinfo/<%= user.uid %>?page=<%=num%>"><%=num%></a></li>
+                    <%}%>
+                    <% }%>
+                    <%if (pageNum==Math.ceil((dishmenus[0].Count/10))){%>
+                    <li><a href="" disabled="true" class="btn disabled">下一页</a></li>
+                    <%}else{%>
+                    <li><a  href="/user/userinfo/<%= user.uid %>?page=<%=parseInt(pageNum) + 1%>">下一页</a></li>
+                    <%}%>
+                </ul>
+                <% } %>
+            </div>
+        </div>
+        <!---------------------------收藏帖子--------------------------->
+        <div class="col-lg-8 col-md-12 rounded right mt-1 mb-3" id="showcollection" style="display: none">
+            <!---------------------------无帖子--------------------------->
+            <% if (collectionlist.length==0) { %>
+                <div class="row mt-3 mb-3">
+                    <div class="col-11 line mb-3"></div>
+                    <div class="col-4 ml-2">
+                        <img src="/img/food/empty.jpg" alt="" class="rounded-circle img">
+                    </div>
+                    <div class="col-7">
+                        <div class="mt-5">这里空空如也QAQ</div>
+                    </div>
+                    <div class="col-11 line mt-3"></div>
+                </div>
+            <% } %>
+            <!---------------------------帖子列表--------------------------->
+            <% collectionlist.forEach(function(collection){ %>
+                <div class="row mt-3 mb-3">
+                    <div class="col-11 line mb-3"></div>
+                    <div class="col-3 ml-2 text-center" onclick="javascript:location.href='/caipu?cid=<%= collection.cid %>'">
+                        <img src="/img/food/<%= collection.square_pic %>" alt="" class="rounded-circle img">
+                    </div>
+                    <div class="col-8">
+                        <div class="row">
+                            <div class="mt-2 col-10 mb-lg-4 mb-md-3" onclick="javascript:location.href='/caipu?cid=<%= collection.cid %>'"><%= collection.title %></div>
+                            <div class="mt-2 col-2 mb-lg-4 mb-md-3">
+                                <% if (user.uid==loginuserid) { %>
+                                    <!-- <button class="btn btn-outline-warning btn-sm" onclick="javascript:location.href='/editMenu/showMenu?cid=<%= collection.cid %>&uid=<%= collection.uid %>'">修改</button> -->
+                                <% } %>
+                            </div>
+                            <div class="dish col-10 my_small mb-lg-4 mb-md-3" onclick="javascript:location.href='/caipu?cid=<%= collection.cid %>'"><%= collection.descript %></div>
+                            <div class="mt-2 col-2 mb-lg-4 mb-md-3">
+                                <% if (user.uid==loginuserid) { %>
+                                <form action="/user/deletedishmenu/<%= user.uid %>/<%= collection.cid %>">
+                                    <!-- <button class="btn btn-outline-danger btn-sm" onclick="defunc()">删除</button> -->
+                                </form>
+                                <% } %>
+                            </div>
+                            <div class="col-3 info">
+                                <img src="/img/icon/click.png" alt="" class="icon">
+                                <span class="ml-1"><%= collection.click %></span>
+                            </div>
+                            <div class="col-3 info">
+                                <img src="/img/icon/like.png" alt="" class="icon">
+                                <span class="ml-1"><%= collection.dianzan %></span>
+                            </div>
+                            <div class="col-3 info">
+                                <img src="/img/icon/collect.png" alt="" class="icon">
+                                <span class="ml-1"><%= collection.collect %></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-11 line mt-3"></div>
+                </div>
+            <% }); %>
+        </div>
+        <!---------------------------关注--------------------------->
+        <div class="col-lg-8 col-md-12 rounded right mt-1 mb-3" id="showfollow" style="display: none">
+            <div class="row mt-3 mb-3">
+                <% followlist.forEach(function(follow){ %>
+                <div class="row col-4 ml-2 mb-3" onclick="javascript:location.href='/user/userinfo/<%= follow.uid %>'">
+                    <div class="col-6"><img src="/img/user/<%= follow.pic %>" class="rounded-circle" alt=""></div>
+                    <div class="col-6 info my_small"><%= follow.uname %></div>
+                </div>
+                <% }); %>
+            </div>
+        </div>
+        <!---------------------------粉丝--------------------------->
+        <div class="col-lg-8 col-md-12 rounded right mt-1 mb-3" id="showfans" style="display: none">
+            <div class="row mt-3 mb-3">
+                <% fanslist.forEach(function(fans){ %>
+                <div class="row col-4 ml-2 mb-3" onclick="javascript:location.href='/user/userinfo/<%= fans.uid %>'">
+                    <div class="col-6"><img src="/img/user/<%= fans.pic %>" class="rounded-circle" alt=""></div>
+                    <div class="col-6 info my_small"><%= fans.uname %></div>
+                </div>
+                <% }); %>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include ('foot.ejs') %>
+</body>
+</html>

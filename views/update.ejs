@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>食 刻 | 修 改 个 人 资 料</title>
+    <link rel="stylesheet" href="/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/css/regist.css"/>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script>
+        $(function (){
+            //要截数据！
+            var uid='<%=uid%>'
+            var username='<%=uname%>';
+
+            var uemail='<%=email%>';
+            var upicvalue='<%=picvalue%>';
+            var udpt='<%=udpt%>';
+            //
+            //input数据绑定
+            var nameinput=document.getElementById('uname')
+            nameinput.value=username;
+
+            var emailinput=document.getElementById('email')
+            emailinput.value=uemail;
+            var udptinput=document.getElementById('udpt')
+            udptinput.value=udpt;
+        //    var picinput=document.getElementById('upic')
+            $("#upic").attr("src",'/img/user/'+upicvalue);
+            $("#picvalue").attr("value","filename="+upicvalue)
+
+            
+        })
+
+        function shuaxin(){
+            var a=Math.round(Math.random()*4)+1;
+            var a1='/img/user/'+a+'.jpg';
+            $("#upic").attr("src",a1);
+            $("#picvalue").attr("value","filename="+a+".jpg")
+      //      alert(document.querySelector('[name="picvalue"]').value)
+
+        }
+
+        function freshUpicAndValue(input){
+            $("#upic").attr("src",URL.createObjectURL(input.files[0]));
+            $("#picvalue").attr("value",URL.createObjectURL(input.files[0]));
+        }
+
+    </script>
+</head>
+<body>
+
+<!--<form  action="/update/myupdate" enctype="multipart/form-data"  role="form" method="post">
+    <div class="form-group">
+        <input type="file" name="qwer" >
+    </div>
+    <input type="submit" class="btn"  value="hhhh">
+</form>-->
+
+<div class="container" >
+    <div class="divheader">
+        <div id="div_headernav">
+            <div id="div_headernav_left">
+                <a href="/user/userinfo/<%= uid %>" target="_self"> <img style="border: 0;width: 100px;height: 100px;margin-left: 50px" src="/img/icon/logo3.png" >
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="divbody row">
+        <div class="divbody_left col-lg-5 col-md-4 ">
+            <img src="/img/icon/logo3.png" id="lefticon"alt="">
+        </div>
+        <div class="divbody_right col-lg-7 col-md-8" >
+            <div class="msgdiv">
+                <div class="msgdiv_mid">
+                    &nbsp;
+                </div>
+                <div class="msgdiv_header">
+                    <h2>我的食刻资料</h2>
+                </div>
+                <div class="msgdiv_mid">
+                    &nbsp;
+                </div>
+                <div class="msgdiv_body">
+                    <form class="form-signin" action="/update/myupdate" enctype="multipart/form-data"  role="form" method="post">
+                        <div class="msgdiv_i">
+                            <label for="" >昵称:</label>
+                            <input type="text" name="uname" id="uname" required autofocus value="">
+                        </div>
+                        <div class="msgdiv_i">
+                            <label for="">密码:</label>
+                            <input type="text" name="upwd" id="upwd"placeholder="请输入新密码" required autofocus>
+                        </div>
+                        <div class="msgdiv_i">
+                            <label for="">邮箱:</label>
+                            <input type="email" name="email" id="email" required autofocus>
+                        </div>
+                        <div class="msgdiv_i">
+                            <label for="">自我介绍:</label>
+                            <textarea name="udpt" id="udpt" cols="20" rows="10"></textarea>
+                        </div>
+                        <div class="msgdiv_i ">
+                            <label for="" style="margin-top: 10px">头像:</label>
+                            <div class="row">
+                                <div class="msgdiv_i_src_div col-7">
+                                    <img src="" alt="" class="msgdiv_i_src" id="upic">
+
+                                    <input type="text" style="display: none" name="picvalue"  value="1.jpg" id="picvalue">
+                                </div>
+                                <div class="msgdiv_i_src_div col-5 form-group ">
+                                    <input type="text" value="<%=uid%>" style="display: none">
+                                    <input type="button" class="btn btn-primary" value="系统头像" onclick="shuaxin()"/>
+                                    <label type="button" class="btn btn-primary" for="picfile"  style="margin-top: 20px">
+                                        本地头像
+                                        <input type="file" id="picfile" name="newpicvalue" style="display: none" onchange="freshUpicAndValue(this)">
+                                    </label>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="msgdiv_i">
+                            <div style="padding-left: 50px;padding-right: 50px;margin-top: 10px" >
+                                <button class="btn btn-danger"  type="submit" >确认修改</button>
+                            </div>
+
+                        </div>
+
+
+                    </form>
+                    <div class="msgdiv_mid">
+                        &nbsp;
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+<br>
+<br>
+<%- include ('foot.ejs') %>
+</body>
+
+
+</html>

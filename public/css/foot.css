@@ -1,0 +1,32 @@
+.jhsize{
+    width: 20px;
+    height: 20px;
+    vertical-align: -15% !important;
+}
+.textcolor{
+    color: #4e555b;
+}
+.bian{
+    color: #4e555b !important;
+}
+.bian:hover{
+    color: #005cbf !important;
+}
+.wsize{
+    width: 25px;
+    height: 25px;
+}
+
+#weixin:hover{
+    width: 80px;
+    height: 80px;
+    content: url('../img/icon/weixincode.jpg');
+    vertical-align: top;
+}
+
+#weibo:hover{
+    width: 80px;
+    height: 80px;
+    content: url('../img/icon/weibocode.jpg');
+    vertical-align: top;
+}

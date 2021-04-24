@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>食 刻 | 菜 谱</title>
+    <!--    导入boot四个文件，导入顺序固定-->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/caidan.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+<!--    <script src="js/header.js"></script>-->
+    <script>
+        window.onload=function(){  //加载窗口时就调用该方法
+            var imgs=document.getElementsByClassName("stars");
+            for(var i=0;i<imgs.length;i++){
+                imgs[i].setAttribute("score",i+1);//设置分数
+                imgs[i].onclick=function(){   //点击时调用方法
+
+
+                    var srcEl=event.srcElement;//通过event来获取原元素
+
+
+                    var score=srcEl.getAttribute("score");//获取分数
+                    for(var j=0;j<score;j++){
+                        imgs[j].src="img/icon/收藏02.png";
+                    }
+                    for(var j=score;j<imgs.length;j++){
+                        imgs[j].src="img/icon/收藏01.png";
+                    }
+                    document.getElementById("lab").innerHTML=srcEl.getAttribute("score");//通过srcEl调用getAttribute方法获取分数
+                    document.getElementById("star").value=srcEl.getAttribute("score");
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<%- include ('header.ejs') %>
+<div class="container">
+    <div class="row mt-lg-2 align-items-center" id="up">
+        <div class="col-lg-5 col-md-12 col-sm-12" id="img_up" ><img id="img" class="" src="img/food/<%=cai[0].rect_pic%>"/></div>
+        <div class="col-lg-7 col-md-12 col-sm-12 pt-lg-5" id="word_up">
+            <h2 id="cname"><%=cai[0].title%></h2>
+            <p class="pt-2" id="cjianjie"><%=cai[0].descript%></p>
+            <div id="middle">
+                <div class="pt-lg-1" id="info">
+                    <a href="/user/userinfo/<%= cai[0].uid %>" style="text-decoration: none;color:inherit;"><img id="info_img" class="float-lg-left rounded-circle mr-2" src="img/user/<%=cai[0].pic%>"/>
+                    <h5 id="info_name" ><%=cai[0].uname%></h5></a>
+                    <%if(dianma==1){%>
+                    <a href="/caipu/dianzang?cid=<%=cai[0].cid%>"><img id="dianzang" class="float-left mr-1 mt-1" src="img/icon/点赞0<%=dianma%>.png"/></a>
+                    <p class="float-left mr-3"><%=dian_num[0].a%></p>
+                    <%}%>
+                    <%if(dianma==2){%>
+                    <a href="/caipu/quxiaodianzang?cid=<%=cai[0].cid%>"><img id="dianzang" class="float-left mr-1 mt-1" src="img/icon/点赞0<%=dianma%>.png"/></a>
+                    <p class="float-left mr-3"><%=dian_num[0].a%></p>
+                    <%}%>
+
+                    <%if(shoucangma==1){%>
+                    <a href="/caipu/shoucang?cid=<%=cai[0].cid%>"><img id="shoucang" class="float-left mr-1 mt-1" src="img/icon/收藏0<%=shoucangma%>.png"/></a>
+                    <p><%=shoucang[0].a%></p>
+                    <%}%>
+                    <%if(shoucangma==2){%>
+                    <a href="/caipu/quxiaoshoucang?cid=<%=cai[0].cid%>"><img id="shoucang" class="float-left mr-1 mt-1" src="img/icon/收藏0<%=shoucangma%>.png"/></a>
+                    <p><%=shoucang[0].a%></p>
+                    <%}%>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="container" id="down">
+    <div class="row"><div class="col-lg-12"><h2 id="title">做法步骤</h2></div></div>
+    <% for(var i in cai){ %>
+    <div class="row  step">
+        <div class="col-lg-5 col-md-12 col-sm-12">
+            <%if(cai[i].step_pic!=""){%>
+            <img src="img/food/<%=cai[i].step_pic%>" class="down_img"/>
+            <%}else{%>
+            <img src="img/food/empty.jpg" class="down_img"/>
+            <%}%>
+
+
+        </div>
+        <div class="col-lg-7 col-md-12 col-sm-12"><h3 class="buzhou_title">步骤<%=cai[i].sid%></h3>
+            <p class="buzhou"><%=cai[i].step_content%></p>
+        </div>
+    </div>
+    <%}%>
+</div>
+
+<div class="container" id="pinglun">
+    <div class="row"><div class="col-lg-12 title"><h2>评论区</h2></div></div>
+    <%for(var i in pinglun){ %>
+    <div class="row pt-5 pb-2 plpart">
+        <div class="col-8">
+            <a href="/user/userinfo/<%= cai[0].uid %>" style="text-decoration: none;color:inherit;"><img class="p_img float-lg-left rounded-circle mr-2" src="img/user/<%=pinglun[i].pic%>"/>
+                <h5 class="p_name"><%=pinglun[i].uname%></h5></a>
+        </div>
+        <div class="col-4">
+            <%for(var j=0;j<pinglun[i].stars;j++){%>
+            <img class="level" src="img/icon/等级.png" />
+            <%}%>
+        </div>
+        <div class="col-12 pt-3"><p class="yonghupl"><%=pinglun[i].content%></p></div>
+    </div>
+    <%}%>
+
+    <div id="addpinglun">
+        <form action="/caipu/pinglun?cid=<%=cai[0].cid%>&uid=<%=uidd%>" method="get">
+        <div class="row" id="add">
+            <div class="col-12 title border-bottom-0"><h2>发表评论</h2></div>
+            <textarea id="addpin" name="addpl"></textarea>
+            <input name="cid" value="<%=cai[0].cid%>" style="display: none" /> <input name="uid" value="<%=uidd%>" style="display: none"/>
+            <button type="submit" id="upload">发 表</button>
+            <div class="stars_all">
+                <img class="stars" src="img/icon/收藏01.png">
+                <img class="stars" src="img/icon/收藏01.png">
+                <img class="stars" src="img/icon/收藏01.png">
+                <img class="stars" src="img/icon/收藏01.png">
+                <img class="stars" src="img/icon/收藏01.png">
+                <label id="lab" >0</label>星<input id="star" name="star" value="0" style="display: none"/>
+            </div>
+        </div>
+        </form>
+    </div>
+
+</div>
+<%- include ('foot.ejs') %>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<link rel="stylesheet" href="/css/header.css"/>
+<header>
+    <div style="text-align: center;" class="container">
+    <!--    <div class="container"><img src="img/icon/logo3.png" alt="" class="logosize"></div>-->
+        <div class="row bigscreen lead">
+            <div class="col-2 pt-0">
+                <a href="/index">
+                    <img src="/img/icon/logo3.png" alt="" title="首页" class="logosize">
+                </a>
+            </div>
+            <div class="col-6 pt-3">
+                <form action="/sousuo" method="get">
+                    <div class="input-group pl-0 my-border">
+                        <input type="text" class="form-control my_small pt-0 pb-0 border-0 inputbg" placeholder="请输入想要搜索的菜谱" name="sscontext">
+                        <input type="submit" value="" class="ssinput">
+                        <input type="hidden" name="loginuserid" value="<%=userid%>">
+    <!--                <input type="button" value="搜索" class="ml-1 pt-0 btn-sousuo small">-->
+                    </div>
+                </form>
+            </div>
+            <div class="col-4 my-pt">
+                <!--                面包屑导航-->
+                <ul class="breadcrumb p-0 ml-2 text-center" style="float: right;margin-right: 30px">
+                    <li class="breadcrumb-item mr-1">
+                        <%if(userid==0){%>
+                        <a href="/login">
+                            <%}else{%>
+                            <a href="/user/userinfo/<%=userid%>"/>
+                            <%}%>
+                            <%if(userid==0){%>
+                            <img src="/img/icon/mine.png" title="我的" alt="" class="iconsize3 tubiao1">
+                            <%}else{%>
+                            <img src="/img/user/<%=upic%>" title="我的" alt="" class="txs3 rounded-circle">
+                            <%}%>
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item mr-1">
+                        <%if(userid==0){%>
+                        <a href="/login/">
+                            <%}else{%>
+                            <a href="/user/collectioninfo/<%=userid%>"/>
+                                <%}%>
+                            <img src="/img/icon/shoucang.png" title="收藏" alt="" class="iconsize2 tubiao2">
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item mr-1">
+                        <%if(userid==0){%>
+                        <a href="/login">
+                            <%}else{%>
+                            <a href="/submitMenu/showMenu?uid=<%=userid%>"/>
+                                <%}%>
+                            <img src="/img/icon/xinjian.png" title="新建菜谱" alt="" class="iconsize2 tubiao3">
+                        </a>
+                    </li>
+                    <%if(userid==0){%>
+                    <li class="breadcrumb-item mr-1">
+                        <a href="/login/" class="text-muted">登录</a>
+                    </li>
+                    <li class="breadcrumb-item mr-1">
+                        <a href="/register/regist1" class="text-muted">注册</a>
+                    </li>
+                    <%}else{%>
+                        <li class="breadcrumb-item mr-1">
+                            <a href="/login/logout" class="text-muted">退出</a>
+                        </li>
+                    <%}%>
+                </ul>
+            </div>
+        </div>
+        <div class="smallscreen row lead">
+            <div class="col-6">
+                <a href="/index">
+                    <img src="/img/icon/logo3.png" alt="" class="logosize">
+                </a>
+            </div>
+            <div class="col-6 pt-2 dropdown">
+                <button class="btn" data-toggle="dropdown" style="background-color: #fcd670">
+                    <img src="/img/icon/zhedie.png" alt="" class="iconsize2">
+                </button>
+                <ul class="dropdown-menu">
+                    <li>
+                        <%if(userid==0){%>
+                        <a href="/login" class="dropdown-item">我的</a>
+                        <%}else{%>
+                                <a href="/user/userinfo/<%=userid%>" class="dropdown-item">我的</a>
+                        <%}%>
+                    </li>
+                    <li>
+                        <%if(userid==0){%>
+                            <a href="/login" class="dropdown-item">收藏</a>
+                        <%}else{%>
+                        <a href="/user/collectioninfo/<%=userid%>" class="dropdown-item">收藏</a>
+                        <%}%>
+                    </li>
+                    <li>
+                        <%if(userid==0){%>
+                            <a href="/login" class="dropdown-item">新建菜谱</a>
+                        <%}else{%>
+                        <a href="/submitMenu/showMenu?uid=<%=userid%>" class="dropdown-item">新建菜谱</a>
+                        <%}%>
+                    </li>
+                    <%if(userid==0){%>
+                    <li><a href="/login/" class="dropdown-item">登录</a></li>
+                    <li><a href="/register/regist1" class="dropdown-item">注册</a></li>
+                    <%}else{%>
+                        <li><a href="/login/logout" class="dropdown-item">退出登录</a></li>
+                    <%}%>
+                    <li>
+                        <form action="/sousuo/smallsousuo" method="get">
+                            <div class="input-group pl-0 my-border">
+                                <input type="text" class="form-control my_small pt-0 pb-0 border-0" placeholder="请输入想要搜索的菜谱" name="sscontext2">
+                                <input type="submit" value="" class="ssinput">
+                            </div>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>

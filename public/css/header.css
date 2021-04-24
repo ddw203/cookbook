@@ -1,0 +1,167 @@
+div .lead{
+    background-color: #fcd670;
+    height: 60px;
+    border-radius: 5px;
+}
+/*大屏*/
+@media screen and (min-width: 992px){
+    .bigscreen{
+
+    }
+    .smallscreen{
+        display: none;
+    }
+}
+
+/*中屏和小屏*/
+@media screen and (max-width: 991px){
+    .bigscreen{
+        display: none;
+    }
+    .smallscreen{
+
+    }
+}
+
+
+.text-muted {
+    color: #6c757d !important;
+    font-size: 15px;
+    font-weight: 400;
+    /*color: white !important;*/
+}
+
+.text-muted:hover{
+    color: #ffffff !important;
+}
+
+.iconsize{
+    background-color: #fcd670;
+    height: 25px;
+    width: 25px;
+}
+.iconsize2{
+    background-color: #fcd670;
+    height: 22px;
+    width: 22px;
+}
+.iconsize3{
+    background-color: #fcd670;
+    height: 20px;
+    width: 20px;
+}
+
+.txs3{
+    height: 30px;
+    width: 30px;
+}
+
+.breadcrumb{
+    background-color: #fcd670;
+}
+.breadcrumb-item + .breadcrumb-item::before {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+    content: "|";
+    /*color: white;*/
+}
+
+
+
+.logosize{
+    height: 65px;
+    width: 65px;
+}
+
+.my_small{
+    font-size: 0.8rem;
+}
+
+.inputbg{
+    /*background-color: #fcd670;*/
+    background-color: #ffffff;
+}
+
+.sousuokuang{
+    width: 350px;
+}
+
+.my-border{
+    border: 2px solid #f5f5f4 !important;
+    border-radius: 7px;
+    background-color: #ffffff;
+}
+
+.btn-sousuo {
+    color: #6c757d;
+    font-size: small;
+    background-color: #f5f5f4;
+    border-color: #f5f5f4;
+    border-radius: 7px;
+}
+
+.btn-sousuo:hover {
+    color: #6c757d;
+    font-size: small;
+    background-color: #e3f2cd;
+    border-color: #e6f2d5;
+    border-radius: 7px;
+}
+
+.btn-sousuo:focus, .btn-sousuo.focus {
+    box-shadow: 0 0 0 0.2rem rgba(245, 245, 244, 0.5);
+}
+
+.btn-sousuo.disabled, .btn-sousuo:disabled {
+    color: #6c757d;
+    font-size: small;
+    background-color: #f5f5f4;
+    border-color: #f5f5f4;
+    border-radius: 7px;
+}
+
+.btn-sousuo:not(:disabled):not(.disabled):active, .btn-sousuo:not(:disabled):not(.disabled).active,
+.show > .btn-danger.dropdown-toggle {
+    color: #6c757d;
+    font-size: small;
+    background-color: #e6f2d5;
+    border-color: #deebcc;
+    border-radius: 7px;
+}
+
+.btn-sousuo:not(:disabled):not(.disabled):active:focus, .btn-sousuo:not(:disabled):not(.disabled).active:focus,
+.show > .btn-danger.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem rgba(245, 245, 244, 0.5);
+}
+
+.my-pt{
+    padding-top: 0.75rem !important;
+}
+
+.ssinput{
+    width: 27px;
+    height:27px;
+    border-radius: 7px;
+    border-color: #f98d0e;
+    background-image: url('../img/icon/sousuo-copy.png');
+}
+
+input[type=text]:focus {
+    /*background-color: #fcd670;*/
+    background-color: #ffffff;
+    box-shadow: none;
+    /*color: #ffffff;*/
+}
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+}
+
+.tubiao1:hover{
+    content: url('../img/icon/minewhite.png');
+}
+.tubiao2:hover{
+    content: url('../img/icon/shoucangwhite.png');
+}
+.tubiao3:hover{
+    content: url('../img/icon/xinjianwhite.png');
+}

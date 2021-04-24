@@ -1,0 +1,232 @@
+.w-65 {
+    width: 65% !important;
+}
+.carousel-indicators li{
+    width: 15px;
+    height: 15px;
+    margin-left: 6px;
+    margin-right: 6px;
+    border-radius: 50%;
+    background-color: #b9bbbd;
+}
+.carousel-indicators .active{
+    background-color: #fcd670;
+}
+.carousel-control-prev,
+.carousel-control-next{
+    width: 4%;
+    height: 20%;
+    background-color: #aaaaaa;
+    top: 40%;
+    border-radius: 0.25rem;
+}
+
+/*导航栏*/
+.nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+.nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+}
+
+.nav-link:hover, .nav-link:focus {
+    text-decoration: none;
+}
+
+.nav-link.disabled {
+    color: #6c757d;
+}
+
+.nav-tabs {
+    border-bottom: 1px solid #dee2e6;
+}
+
+.nav-item{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+/*小屏*/
+@media screen and (max-width: 767px){
+    .nav-item{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
+.nav-tabs .nav-item {
+    margin-bottom: -1px;
+}
+
+.nav-tabs .nav-link {
+    border: 1px solid transparent;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+}
+
+.nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
+    border-color: #fcd670 #fcd670 #fcd670;
+}
+
+.nav-tabs .nav-link.disabled {
+    color: #6c757d;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+    color: #495057;
+    background-color: #fcd670;
+    border-color: #fcd670 #fcd670 #fcd670;
+}
+
+.nav-tabs .dropdown-menu {
+    margin-top: -1px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.nav-text{
+    color: #838486;
+}
+
+.carousel-indicators {
+    clean:both;
+    opacity: 0.3;
+}
+
+/*大屏*/
+@media screen and (min-width: 992px){
+    .ctitle{
+        font-family: 汉仪字酷堂经解楷体;
+        font-size: 30px;
+        padding-left: 0;
+        margin-right: 15%;
+        margin-left: 15%;
+        padding-top: 100px;
+    }
+    .cdescript{
+        font-family: 汉仪字酷堂经解楷体;
+        font-size: 15px;
+        padding-left: 0;
+        margin-right: 15%;
+        margin-left: 15%;
+        padding-top: 5px;
+    }
+    .indexcp{
+        width: 250px;
+    }
+    .coll {
+        width: 250px !important;
+        margin-left: 70px;
+        border-radius: 5px;
+        background-color: #ffffff;
+    }
+
+}
+
+/*中屏和小屏*/
+@media screen and (max-width: 991px){
+    .ctitle{
+        font-family: 汉仪字酷堂经解楷体;
+        font-size: 20px;
+    }
+    .cdescript{
+        font-family: 汉仪字酷堂经解楷体;
+        font-size: 10px;
+    }
+    .indexcp{
+        width: 200px;
+    }
+    .coll{
+        width: 200px !important;
+        margin-left: 5px;
+        border-radius: 5px;
+        background-color: #ffffff;
+    }
+
+}
+
+.my_card{
+    border-radius: 10px;
+    width: 260px;
+
+}
+
+.iconsize4{
+    width: 15px;
+    height: 15px;
+    opacity: 80%;
+    vertical-align: -1.5%;
+}
+
+/*包含以下四种的链接*/
+a {
+    text-decoration: none;
+}
+/*正常的未被访问过的链接*/
+a:link {
+    text-decoration: none;
+    color: #1b1e21;
+}
+/*已经访问过的链接*/
+a:visited {
+    text-decoration: none;
+    color: #1b1e21;
+}
+/*鼠标划过(停留)的链接*/
+a:hover {
+    text-decoration: none;
+    color: black;
+}
+/* 正在点击的链接*/
+a:active {
+    text-decoration: none;
+    color: black;
+}
+
+.jx{
+    letter-spacing: 15px;
+}
+
+.haha{
+    color: #4e555b;
+}
+.txsize{
+    width: 25px;
+    height: 25px;
+    vertical-align: -20%;
+}
+
+.haha2{
+    color: #4e555b;
+    font-size: 15px;
+}
+
+.coll:hover{
+    transform: scale(1.01);
+    /*background-color: #e6e6e5;*/
+}
+.indeximg{
+    margin-top: 1px;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+    width: 100%;
+    height: auto;
+    border-radius: 5px 5px 0px 0px;
+}
+.more{
+    color: #4e555b;
+}
+.more:hover{
+    transform: scale(1.05);
+}

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6ff053d8-3992-4beb-8c28-3bcb8d25d60e" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="boot" />
+        <option value="package.json" />
+        <option value="HTML File" />
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1l6QmqRPBlR3wFPIKseAuX1cSrn" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="ECMAScript 6" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\hp\Desktop\12.11 2052\cookbook\views" />
+      <recent name="D:\Desktop\cookbook\views" />
+      <recent name="D:\Desktop\cookbook\router" />
+      <recent name="D:\Desktop\cookbook\public\css" />
+      <recent name="D:\Desktop\cookbook\node_modules" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Libeisi\Desktop\co\cookbook\public\img\food" />
+      <recent name="C:\Users\Libeisi\Desktop\co\cookbook\views" />
+      <recent name="C:\Users\Libeisi\Desktop\cookbook\public\img" />
+      <recent name="C:\Users\Libeisi\Desktop\cookbook\public\css" />
+      <recent name="D:\WebstormProjects\cookbook\views" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="myself.ejs" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/cookbook/public/myself.ejs" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.myself.ejs" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6ff053d8-3992-4beb-8c28-3bcb8d25d60e" name="Default Changelist" comment="" />
+      <created>1606915223133</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1606915223133</updated>
+      <workItem from="1606915224209" duration="6263000" />
+      <workItem from="1607001367578" duration="6987000" />
+      <workItem from="1607051612865" duration="86409000" />
+      <workItem from="1607307007698" duration="22687000" />
+      <workItem from="1607422720832" duration="3774000" />
+      <workItem from="1607438155078" duration="2476000" />
+      <workItem from="1607440741532" duration="1827000" />
+      <workItem from="1607443440418" duration="1596000" />
+      <workItem from="1607475000632" duration="2057000" />
+      <workItem from="1607477136841" duration="7551000" />
+      <workItem from="1607487766998" duration="1556000" />
+      <workItem from="1607489716803" duration="11974000" />
+      <workItem from="1607516803296" duration="7814000" />
+      <workItem from="1607575838473" duration="13359000" />
+      <workItem from="1607596935117" duration="1291000" />
+      <workItem from="1607598244362" duration="7204000" />
+      <workItem from="1607605817568" duration="9974000" />
+      <workItem from="1607667054959" duration="5979000" />
+      <workItem from="1607691305412" duration="8114000" />
+      <workItem from="1607925581581" duration="6311000" />
+      <workItem from="1607932414637" duration="10659000" />
+      <workItem from="1607948729912" duration="10738000" />
+      <workItem from="1607994165117" duration="290000" />
+      <workItem from="1608020482562" duration="5000" />
+      <workItem from="1608038300851" duration="663000" />
+      <workItem from="1608105007252" duration="3506000" />
+      <workItem from="1608118775256" duration="2000" />
+      <workItem from="1608121379829" duration="3000" />
+      <workItem from="1608121413794" duration="2000" />
+      <workItem from="1608122315808" duration="64000" />
+      <workItem from="1608122707932" duration="19000" />
+      <workItem from="1608128561097" duration="2208000" />
+      <workItem from="1608172364433" duration="3490000" />
+      <workItem from="1608272078383" duration="1055000" />
+      <workItem from="1608467466903" duration="1058000" />
+      <workItem from="1608532709190" duration="1392000" />
+      <workItem from="1608691283816" duration="5996000" />
+      <workItem from="1608709156971" duration="2064000" />
+      <workItem from="1608711394454" duration="1623000" />
+      <workItem from="1608713181119" duration="70000" />
+      <workItem from="1608729837795" duration="752000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>食 刻 | 登 录</title>
+    <!--顺序固定-->
+    <link rel="stylesheet" href="/css/bootstrap.css"/>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="/css/login.css">
+    <script>
+        $(function (){
+            var a='<%=registsuccess%>'
+            var b='<%=isfalse%>'
+            if(a==1){
+                alert('注册成功')
+            }
+            if(b==1){
+                alert('用户名或密码错误')
+            }
+
+        })
+        function yzmclick(){
+            let date = new Date();
+            console.log(date);
+            let time = date.getTime();
+            sessionStorage.setItem('time', time);
+            console.log(time);
+            // 图片的src属性，拼接每次产生的时间戳
+            $("#myyzm").attr("src",`/login/svg?id=${time}`)
+        }
+
+
+
+    </script>
+
+</head>
+
+<body >
+<!--bootstrap-->
+
+
+<div class="container" style="padding-right: 0px;padding-left: 0px" >
+    <div id="div_header" style="background-color: #fcd670;">
+        <div id="div_headernav">
+            <div id="div_headernav_left">
+                <a href="/index" target="_self"> <img style="border: 0;width: 100px;height: 100px;margin-left: 50px" src="/img/icon/logo3.png" >
+                </a>
+
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div id="loginmain" class="row" style="margin: 0" >
+        <div id="loginmain_left1" class="col-1" style="padding: 0">
+
+        </div>
+        <div id="loginmain_left" class="col-6" >
+            <img src="/img/icon/logo3.png" style="width: 300px;height: 300px" alt="">
+        </div>
+        <div id="loginmain_right" class="col-4">
+            <div style="margin-left: 20px; height: 30px; line-height: 50px; color: white; background-color: white">
+            </div>
+            <div style="height: 50px;line-height: 50px; color: white;background-color: white">
+                <h2>
+                    我的食刻</h2>
+            </div>
+
+            <!--            //登录小框-->
+            <div>
+                <div class="text-center " style="margin-left: 20px;background-color: white;height: 315px;">
+                    <form class="form-signin" action="/login/mylogin" method="post">
+                        <div class="logindiv" >
+                            <div class="" style="font-weight: bold; font-size:13px;float: left; margin-left: 10px; margin-bottom: 2px;">
+                                电话号码
+                            </div>
+                            <input type="text" name="phone" ref="phonenum" value="13558964259"  placeholder="请输入电话号码" required autofocus>
+                        </div>
+                        <div class="logindiv" >
+                            <div class="" style="font-weight: bold; font-size:13px; float: left; margin-left: 10px; margin-bottom: 2px;">
+                                用户密码
+                            </div>
+                            <input type="password" name="pwd" ref="pwdnum" value="123" placeholder="请输入密码" required autofocus>
+                        </div>
+                        <div class="logindiv">
+                            <div>
+                                <div class="float-left" style="width:40px;font-weight: bold; font-size:13px; float: left; margin-left: 10px; margin-bottom: 2px;">
+                                    验证码
+                                </div>
+                                <%if(myerror==1){%>
+                                    <div class="text-danger float-right " style="width:80px;font-weight: bold; font-size:15px; float: left; margin-left: 10px; margin-bottom: 1px;">
+                                        验证码错误
+                                    </div>
+                                <%}%>
+                            </div>
+                            <div class="input-group">
+                                <input class="yzmclass mr-3" type="text" ref="yzmnum" name="yzm" value="1"  placeholder="请输入验证码" required autofocus>
+                                <span class="input-group-prepend" >
+                                    <img class="yzm" id="myyzm" src="/login/svg" onclick="yzmclick()">
+                                </span>
+
+                            </div>
+
+                        </div>
+                        <div class="logindiv" style="margin-bottom: 10px">
+                            <button id="bt-login"  class="c_button"
+                                    tabindex="3"  >登录</button>
+                        </div>
+                        <div class="logindiv" style="height: 20px; line-height: 20px; font-size: 12px; padding: 0px ;">
+                            <span style="float: left;margin-left: 10px"> <a href="/login/regist1" style="font-size: 15px; color: #fd7e14;">立即注册</a> </span>
+                            <span style="float: right;margin-right: 10px"><a href="#" style="font-size: 15px; color: #fd7e14;">找回密码</a> </span>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="loginmain_right1" class="col-1"></div>
+    </div>
+
+
+
+</div>
+<br>
+<br>
+<%- include ('foot.ejs') %>
+</body>
+</html>

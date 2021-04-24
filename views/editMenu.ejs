@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>食 刻 | 修 改</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/submitMenu.css">
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/editMenuPage.js"></script>
+    <!--后面的js需要用到前面的js-->
+
+</head>
+<body>
+<%- include ('header.ejs') %>
+    <div class="container border-bottom mt-1">
+        <span class="text-hide">总步骤数</span>
+        <div class="mb-1">
+            <img src="../img/icon/left.png" class="back_btn img-responsive center-block "
+                 onclick="javascript:location.href='/user/userinfo/<%=userid%>'"
+                 onmouseover="this.src='../img/icon/left_activ.png'" onmouseout="this.src='../img/icon/left.png'"
+            />
+            <span>编辑菜单</span>
+        </div>
+    </div>
+
+    
+    <div class="container mt-1">
+        <form  action="/editMenu/updateMenu" id="registEdit"  enctype="multipart/form-data"  method="POST" role="form">
+
+            <div class="form-group">
+                <input type="text" value="<%=upic%>" style="display: none" name="upicc">
+                <label for="name" class="text-muted label_com">名称</label>
+                <input type="text" name="title" class="form-control" id="name" placeholder="请输入菜谱名称" value="<%=data[0]["title"]%>">
+                <input type="text" name="cid" value="<%=data[0]["cid"]%>" style="display: none">
+            </div>
+
+
+            <div class="container row mt-3">
+                <div class="col-lg-5 col-12 ">
+                    <label  class="text-muted label_com">首页缩略图</label><br>
+                    <div class="form-group">
+
+                        <!--文件上传点击部分-->
+                        <label for="square_pic" class="file-label">
+                            <span >文件上传</span>
+                        </label>
+                        <!--照片显示-->
+                        <img src="/editMenu/getImg?filename=<%=data[0]["square_pic"]%>" id="square_show" class="square_img" alt="">
+                        <!--被隐藏的实际打开文件组件-->
+                        <input type="file" name="square_pic" multiple="multiple" id="square_pic" class="file-input" value="<%data[0]["square_pic"]%>">
+                        <!--描述部分-->
+                    </div>
+                </div>
+
+
+                <div class="col-lg-6 col-12">
+                    <label  class="text-muted label_com">详情成品图片</label><br>
+                    <div class="form-group">
+
+                        <!--文件上传点击部分-->
+                        <label for="rect_pic" class="file-label">
+                            <span >文件上传</span>
+                        </label>
+                        <!--照片显示-->
+                        <img src="/editMenu/getImg?filename=<%=data[0]["rect_pic"]%>" id="rect_show" class="rect_img" alt="">
+                        <!--被隐藏的实际打开文件组件-->
+                        <input type="file" multiple="multiple" name="rect_pic" id="rect_pic" class="file-input" value="<%data[0]["rect_pic"]%>">
+                        <!--描述部分-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="container form-group mt-3">
+                <label  class="text-muted label_com">菜谱描述</label><br>
+                <textarea name="description" class="container border-light"  placeholder="请输入菜谱描述，最多输入100字" cols="30" rows="10"><%=data[0]["descript"]%></textarea>
+            </div>
+
+
+            <div class="container form-group mt-3">
+                <label  class="text-muted label_com">菜品类型</label><br>
+
+
+
+
+
+                <div   class="btn-group" data-toggle="buttons">
+                    <% if (data[0]["class"]=="家常菜") { %>
+                        <label   class="btn btn-outline-info active"  >
+                            <input type="radio" name="class" checked="checked" autocomplete="off" value="家常菜"> &nbsp; &nbsp;家常菜 &nbsp; &nbsp;
+                        </label>
+                        <label   class="btn btn-outline-info"  >
+                            <input type="radio" name="class" autocomplete="off" value="汤"> &nbsp; &nbsp;汤 &nbsp; &nbsp;
+
+                        </label>
+                        <label   class="btn btn-outline-info"  >
+                            <input type="radio" name="class" autocomplete="off" value="烘焙"> &nbsp; &nbsp;烘焙 &nbsp; &nbsp;
+                        </label>
+                        <label   class="btn btn-outline-info"  >
+                            <input type="radio" name="class" autocomplete="off" value="西餐"> &nbsp; &nbsp;西餐 &nbsp; &nbsp;
+                        </label>
+                    <% } else if (data[0]["class"]=="汤"){ %>
+
+                            <label   class="btn btn-outline-info "  >
+                                <input type="radio" name="class"  autocomplete="off" value="家常菜"> &nbsp; &nbsp;家常菜 &nbsp; &nbsp;
+                            </label>
+                            <label   class="btn btn-outline-info active"  >
+                                <input type="radio" name="class" checked="checked" autocomplete="off" value="汤"> &nbsp; &nbsp;汤 &nbsp; &nbsp;
+
+                            </label>
+                            <label   class="btn btn-outline-info"  >
+                                <input type="radio" name="class" autocomplete="off" value="烘焙"> &nbsp; &nbsp;烘焙 &nbsp; &nbsp;
+                            </label>
+                            <label   class="btn btn-outline-info"  >
+                                <input type="radio" name="class" autocomplete="off" value="西餐"> &nbsp; &nbsp;西餐 &nbsp; &nbsp;
+                            </label>
+
+                        <% } else if (data[0]["class"]=="烘焙"){ %>
+                            <label   class="btn btn-outline-info "  >
+                                <input type="radio" name="class"  autocomplete="off" value="家常菜"> &nbsp; &nbsp;家常菜 &nbsp; &nbsp;
+                            </label>
+                            <label   class="btn btn-outline-info "  >
+                                <input type="radio" name="class"  autocomplete="off" value="汤"> &nbsp; &nbsp;汤 &nbsp; &nbsp;
+
+                            </label>
+                            <label   class="btn btn-outline-info active"  >
+                                <input type="radio" name="class" checked="checked" autocomplete="off" value="烘焙"> &nbsp; &nbsp;烘焙 &nbsp; &nbsp;
+                            </label>
+                            <label   class="btn btn-outline-info"  >
+                                <input type="radio" name="class" autocomplete="off" value="西餐"> &nbsp; &nbsp;西餐 &nbsp; &nbsp;
+                            </label>
+
+                        <% } else if (data[0]["class"]=="西餐"){ %>
+
+                            <label   class="btn btn-outline-info "  >
+                                <input type="radio" name="class"  autocomplete="off" value="家常菜"> &nbsp; &nbsp;家常菜 &nbsp; &nbsp;
+                            </label>
+                            <label   class="btn btn-outline-info "  >
+                                <input type="radio" name="class"  autocomplete="off" value="汤"> &nbsp; &nbsp;汤 &nbsp; &nbsp;
+
+                            </label>
+                            <label   class="btn btn-outline-info "  >
+                                <input type="radio" name="class" checked="checked" autocomplete="off" value="烘焙"> &nbsp; &nbsp;烘焙 &nbsp; &nbsp;
+                            </label>
+                            <label   class="btn btn-outline-info active"  >
+                                <input type="radio" name="class" checked="checked" autocomplete="off" value="西餐"> &nbsp; &nbsp;西餐 &nbsp; &nbsp;
+                            </label>
+                        <% } %>
+                </div>
+
+            </div>
+
+
+            <!--步骤一行-->
+
+            <!--用于插入步骤-->
+            <div class="steps_div  mt-3">
+                <!--用于插入步骤-->
+                <label  class="text-muted label_com ">做法步骤</label><br>
+                <%for(var k=1;k<data.length;k++) {%>
+                <div class='container  row op_row mb-2' id="my_op_row<%=k%>">
+                    <%for(var i=0;i<3;i++){%>
+                    <%if(i==0 ){%>
+                    <div class='col-lg-5 col-12'>
+
+                        <%}else if(i==1){%>
+                        <div class='col-lg-5 col-9'>
+                        <%}else{%>
+                        <div class='col-lg-2 col-3'>
+                            <%}%>
+                            <div class='form-group' >
+                                <% if(i==0){%>
+                                <label for='file_step<%=k%>' id="label_step<%=k%>" class='file-step'>
+                                    <span class='label-placeholder'>文件上传</span>
+                                    <%if(data[k]["file_step"]!=""){%>
+                                    <img src="/editMenu/getImg?filename=<%=data[k]["file_step"]%>"  alt='' id='img_step<%=k%>' class='img-responsive img'>
+                                    <%}else{%>
+                                    <img src="/img/food/empty.jpg"  alt='' id='img_step<%=k%>' class='img-responsive img'>
+                                    <%}%>
+                                    <input name="span_for_filename<%=k%>" style="display: none" id="span_for_filename<%=k%>"  value="filename=<%=data[k]["file_step"]%>"></input>
+                                </label>
+                                <input type='file' multiple="multiple" name='file_step<%=k%>' id='file_step<%=k%>' class='file-input' onchange="refreshCourses(this);">
+                                <%}else if(i==1){%>
+                                <textarea class='form-control' name='decript_step<%=k%>'  rows='13' id='decript_step<%=k%>' placeholder='<%=k%>、请输入步骤说明'><%=data[k]["decript_step"]%></textarea>
+                                <%}else {%>
+                                <%for(var j=0;j<4;j++){%>
+                                <div class='container  pl-0 mb-2 text-center'   >
+                                    <table border='1'    class='op_table' onclick="step_handle(this);">
+                                        <tr>
+                                            <td class='p-1'>
+                                                <%if(j==0){%>
+                                                    <img src='../img/icon/down.png' style='display: block' class='img-fluid' alt='' >
+                                            </td>
+                                            <td class='p-1'>
+                                                <span>删除本步</span>
+                                                <span class="op_code" style="display: none">0</span>
+                                            </td>
+                                            <%}else if(j==1){%>
+                                                <img src='../img/icon/up.png' style='display: block' class='img-fluid' alt='' >
+                                                </td>
+                                                <td class='p-1'>
+                                                    <span>上移一步</span>
+                                                    <span class="op_code" style="display: none">1</span>
+                                                </td>
+                                            <%}else if(j==2){%>
+                                                <img src='../img/icon/down.png' style='display: block' class='img-fluid' alt='' >
+                                                </td>
+                                                <td class='p-1'>
+                                                    <span>下移一步</span>
+                                                    <span class="op_code" style="display: none">2</span>
+                                                </td>
+                                            <%}else{%>
+                                                <img src='../img/icon/add.png' style='display: block' class='img-fluid' alt='' >
+                                                </td>
+                                                <td class='p-1'>
+                                                    <span>添加一步</span>
+                                                    <span class="op_code" style="display: none">3</span>
+                                                </td>
+                                            <%}%>
+                                        </tr>
+                                    </table>
+
+                                </div>
+                                <%}%>
+                                <%}%>
+                            </div>
+                        </div>
+                        <%}%>
+                    </div>
+
+                    <%}%>
+                </div>
+                <button type="submit" class="mb-2 btn btn-outline-danger" >修改菜谱</button>
+            </div>
+
+
+            </div>
+        </form>
+
+    </div>
+<br>
+<br>
+<%- include ('foot.ejs') %>
+</body>
+</html>

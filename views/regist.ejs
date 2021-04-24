@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>食 刻 | 加 入 食 刻</title>
+    <link rel="stylesheet" href="/css/bootstrap.css"/>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/regist.css"/>
+    <script>
+
+        $(function()
+        {
+           var i= '<%=isRegist%>'
+            if(i==0){
+                alert('电话号码已经被注册')
+            }
+            var a=Math.round(Math.random()*4)+1;
+            var a1='/img/user/'+a+'.jpg';
+            $("#upic").attr("src",a1);
+            $("#picvalue").attr("value","filename="+a+".jpg")
+
+        })
+        function shuaxin(){
+            $("#upic").load(location.href + " #pic");
+            var a=Math.round(Math.random()*4)+1;
+            var a1='/img/user/'+a+'.jpg';
+            $("#upic").attr("src",a1);
+            var str="filename="+a+".jpg";
+            alert(strs);
+            $("#picvalue").attr("value",str)
+            //alert(document.querySelector('[name="picvalue"]').value)
+
+        }
+        function freshUpicAndValue(input){
+            $("#upic").attr("src",URL.createObjectURL(input.files[0]));
+            $("#picvalue").attr("value",URL.createObjectURL(input.files[0]));
+        }
+
+
+    </script>
+</head>
+<body style="background-color: #f5f5f4">
+<!--<form  action="/register/myreg" enctype="multipart/form-data"  role="form" method="post">-->
+<!--    <div class="form-group">-->
+<!--        <input type="file" name="qwer" >-->
+<!--    </div>-->
+<!--    <input type="submit" class="btn"  value="hhhh">-->
+<!--</form>-->
+
+<div class="container ">
+    <div id="div_header" style="background-color: #fcd670;">
+        <div id="div_headernav" class="row">
+            <div id="div_headernav_left" class="col-6">
+                <a href="/index" target="_self"> <img style="border: 0;width: 100px;height: 100px;margin-left: 50px" src="/img/icon/logo3.png" >
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="divbody row">
+        <div class="divbody_left col-lg-5 col-md-4 ">
+            <img src="/img/icon/logo3.png" id="lefticon"alt="">
+        </div>
+        <div class="divbody_right col-lg-7 col-md-8" >
+            <div class="msgdiv">
+                <div class="msgdiv_mid">
+                    &nbsp;
+                </div>
+                <div class="msgdiv_mid">
+                    &nbsp;
+                </div>
+                <div class="msgdiv_header">
+                    <h2 >我的食刻资料</h2>
+                </div>
+                <div class="msgdiv_mid">
+                    &nbsp;
+                </div>
+                <div class="msgdiv_body">
+                    <form class="form-signin" action="/register/myreg" enctype="multipart/form-data"  role="form" method="post">
+                        <div class="msgdiv_i">
+                            <label for="" >昵称:</label>
+                            <input type="text" name="uname" id="uname" required autofocus value="">
+                        </div>
+                        <div class="msgdiv_i">
+                            <label for="">密码:</label>
+                            <input type="text" name="upwd" id="upwd" required autofocus>
+                        </div>
+                        <div class="msgdiv_i">
+                            <label for="" >手机号码:</label>
+                            <input type="text" name="uphone" id="uphone" required autofocus value="">
+                        </div>
+                        <div class="msgdiv_i">
+                            <label for="">邮箱:</label>
+                            <input type="email" name="email" id="email" required autofocus>
+                        </div>
+                        <div class="msgdiv_i">
+                            <label for="">自我介绍:</label>
+                            <textarea name="udpt" id="udpt" cols="20" rows="10"></textarea>
+                        </div>
+                        <div class="msgdiv_i ">
+                            <label for="" style="margin-top: 10px">头像:</label>
+                            <div class="row">
+                                <div class="msgdiv_i_src_div col-7">
+                                    <img src="" alt="" class="msgdiv_i_src" id="upic">
+                                    <input type="text" style="display: none" value="1.jpg" id="picvalue" name="picvalue">
+                                </div>
+                                <div class="msgdiv_i_src_div col-5 form-group ">
+                                    <input type="button" class="btn btn-primary" value="系统头像" onclick="shuaxin()"/>
+                                    <label type="button" class="btn btn-primary" for="picfile"  style="margin-top: 20px">
+                                        本地头像
+                                        <input type="file" id="picfile" name="newpicvalue" style="display: none" onchange="freshUpicAndValue(this)">
+                                    </label>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="msgdiv_i">
+                            <div style="margin-top: 10px;  vertical-align: middle; horiz-align: center" >
+                                <button class="btn btn-danger"  type="submit" >注册</button>
+                            </div>
+
+                        </div>
+
+
+                    </form>
+                    <div class="msgdiv_mid">
+                        &nbsp;
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+<br>
+<br>
+<%- include ('foot.ejs') %>
+</body>
+</html>
